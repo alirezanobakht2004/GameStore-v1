@@ -1,8 +1,10 @@
-package ir.ac.kntu; 
+package ir.ac.kntu;
 
 public class Main {
+    Admin admin;
+    User user;
 
     public static void main(String[] args) {
-        System.out.println("GXVC");
+
     }
 }
