@@ -1,10 +1,16 @@
 package ir.ac.kntu;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Sign {
-    private ArrayList<User> usersArr = new ArrayList<User>();
+
+    private static List<User> usersArr = new ArrayList<User>();
+
+    public static List<User> getUsersArr() {
+        return usersArr;
+    }
 
     public void sign() {
         System.out.println("Select Your Role");
@@ -47,7 +53,9 @@ public class Sign {
         if (in == 1) {
             signUp();
         }
-
+        if (in == 2) {
+            signIn();
+        }
         if (in == 3) {
             sign();
         }
@@ -60,6 +68,10 @@ public class Sign {
         String username = input.nextLine();
         System.out.println("Enter password");
         String password = input.nextLine();
+        if (!password.matches("(?=(.*[a-z]){3,})(?=(.*[A-Z]){2,})(?=(.*[0-9]){2,})(?=(.*)+).{8,}")) {
+            System.out.println("not correct password!");
+            signUp();
+        }
         System.out.println("Enter email:");
         String email = input.nextLine();
         System.out.println("Enter phonenumber");
@@ -79,4 +91,28 @@ public class Sign {
         }
         sign();
     }
+
+    public void signIn() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter username:");
+        String username = input.nextLine();
+        System.out.println("Enter password");
+        String password = input.nextLine();
+        int count = 0;
+        for (int i = 0; i < usersArr.size(); i++) {
+            if (usersArr.get(i).getUsername().equals(username)) {
+                if (usersArr.get(i).getUsername().equals(password)) {
+                    System.out.println("Your welcome");
+                    count++;
+                    break;
+                }
+            }
+        }
+        if (count == 0) {
+            System.out.println("Invalid Enties");
+            signIn();
+        }
+
+    }
+
 }
