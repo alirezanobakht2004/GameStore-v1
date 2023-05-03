@@ -62,10 +62,6 @@ public class User {
             }
         }
 
-        if (in == 2) {
-
-        }
-
         if (in == 3) {
             Sign usersign = new Sign();
             usersign.signIn();
