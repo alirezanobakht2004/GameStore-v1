@@ -18,6 +18,8 @@ public class Admin {
                 break;
             case 3:
                 s.adminStart();
+            default:
+                break;
         }
     }
 }
