@@ -68,7 +68,7 @@ public class Sign {
         User user = new User(username, password, phoneNumber, email);
         int count = 0;
         for (int i = 0; i < usersArr.size(); i++) {
-            if (usersArr.get(i).getUsername().equals(user.username)) {
+            if (usersArr.get(i).getUsername().equals(user.getUsername())) {
                 System.out.println("already taken username!");
                 count++;
             }

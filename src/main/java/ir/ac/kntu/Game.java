@@ -2,6 +2,7 @@ package ir.ac.kntu;
 
 
 public class Game {
-    private String title,info;
+    private String title;
+    private String info;
 
 }
