@@ -73,14 +73,11 @@ public class User {
 
     public void editProfile() {
         Scanner input = new Scanner(System.in);
-
         System.out.println("1.change username");
         System.out.println("2.change password");
         System.out.println("3.change email");
         System.out.println("4.change phonenumber");
         System.out.println("5.back");
-        System.out.println("6.exit");
-
         int inner = input.nextInt();
         switch (inner) {
             case 1:
@@ -119,8 +116,6 @@ public class User {
             case 5:
                 this.profile();
                 break;
-            case 6:
-                System.exit(0);
             default:
                 break;
         }
