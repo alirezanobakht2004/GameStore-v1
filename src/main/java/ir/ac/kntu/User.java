@@ -173,6 +173,7 @@ public class User {
 
     public void wallet() {
         System.out.println("enter amount of money you want to add:");
+        
         Scanner input = new Scanner(System.in);
         this.wallet += input.nextInt();
         this.profile();
