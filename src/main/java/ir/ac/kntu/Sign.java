@@ -29,6 +29,7 @@ public class Sign {
     }
 
     public void adminStart() {
+        System.out.println("\033[1;94m"+"Admin entry menu"+"\033[0m");
         String usernamerOfAdmin;
         String passwordOfAdmin;
         System.out.println("Enter your username");
@@ -36,8 +37,9 @@ public class Sign {
         usernamerOfAdmin = input1.nextLine();
         System.out.println("Enter your password");
         passwordOfAdmin = input1.nextLine();
-        if (usernamerOfAdmin.equals("Alireza") && passwordOfAdmin.equals("12345678")) {
-            System.out.println("dkd");
+        if (usernamerOfAdmin.equals("A") && passwordOfAdmin.equals("1")) {
+            Admin admin = new Admin();
+            admin.startMenu();
         } else {
             System.out.println("incorrect username or password");
             sign();
