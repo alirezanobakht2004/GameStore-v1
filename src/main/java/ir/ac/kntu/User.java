@@ -62,9 +62,67 @@ public class User {
             }
         }
 
+        if (in == 2) {
+            editProfile();
+        }
         if (in == 3) {
             Sign usersign = new Sign();
             usersign.signIn();
+        }
+    }
+
+    public void editProfile() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("1.change username");
+        System.out.println("2.change password");
+        System.out.println("3.change email");
+        System.out.println("4.change phonenumber");
+        System.out.println("5.back");
+        System.out.println("6.exit");
+
+        int inner = input.nextInt();
+        switch (inner) {
+            case 1:
+                System.out.println("Enter new username:");
+                Scanner inputOne = new Scanner(System.in);
+                this.username = inputOne.nextLine();
+                System.out.println("your username changed!");
+                this.profile();
+                break;
+            case 2:
+                System.out.println("Enter new password:");
+                Scanner inputTwo = new Scanner(System.in);
+                String pass = inputTwo.nextLine();
+                if (pass.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
+                    this.password = pass;
+                    System.out.println("your password changed!");
+                } else {
+                    System.out.println("wrong pattern");
+                }
+                this.profile();
+                break;
+            case 3:
+                System.out.println("Enter new email:");
+                Scanner inputThree = new Scanner(System.in);
+                this.email = inputThree.nextLine();
+                System.out.println("your email changed!");
+                this.profile();
+                break;
+            case 4:
+                System.out.println("Enter new phonenumber:");
+                Scanner inputFour = new Scanner(System.in);
+                this.phoneNumber = inputFour.nextLine();
+                System.out.println("your phonenumber changed!");
+                this.profile();
+                break;
+            case 5:
+                this.profile();
+                break;
+            case 6:
+                System.exit(0);
+            default:
+                break;
         }
     }
 }
