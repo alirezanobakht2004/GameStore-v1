@@ -45,17 +45,15 @@ public class Sign {
         Scanner input = new Scanner(System.in);
         int in = input.nextInt();
         if (in == 1) {
-            sign_up();
+            signUp();
         }
-        if (in == 2) {
 
-        }
         if (in == 3) {
             sign();
         }
     }
 
-    public void sign_up() {
+    public void signUp() {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Enter username:");

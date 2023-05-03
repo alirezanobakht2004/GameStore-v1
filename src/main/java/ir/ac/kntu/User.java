@@ -1,6 +1,5 @@
 package ir.ac.kntu;
 
-
 public class User {
     public String getUsername() {
         return username;
@@ -18,7 +17,7 @@ public class User {
         return email;
     }
 
-    String username, password, phoneNumber ,email;
+    String username, password, phoneNumber, email;
 
     public User(String username, String password, String phoneNumber, String email) {
         this.username = username;
