@@ -11,11 +11,19 @@ public class User {
 
     private String email;
 
+    private int wallet = 0;
+
+    private int i;
+
     public User(String username, String password, String phoneNumber, String email) {
         this.username = username;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    public User() {
+
     }
 
     public String getUsername() {
@@ -34,10 +42,47 @@ public class User {
         return email;
     }
 
+    public int getWallet() {
+        return wallet;
+    }
+
+    public void userMenu(int i) {
+        this.i = i;
+        System.out.println("\033[1;92m" + "User Menu" + "\033[0m");
+        System.out.println("Enter 1 for profile");
+        System.out.println("Enter 2 for library");
+        System.out.println("Enter 3 for store");
+        System.out.println("Enter 4 for friends");
+        System.out.println("Enter 5 for back");
+        Scanner input = new Scanner(System.in);
+        int in = input.nextInt();
+        switch (in) {
+            case 1:
+                Sign.getUsersArr().get(i).profile();
+                break;
+            case 2:
+                Sign.getUsersArr().get(i).profile();
+                break;
+            case 3:
+                Sign.getUsersArr().get(i).profile();
+                break;
+            case 4:
+                Sign.getUsersArr().get(i).profile();
+                break;
+            case 5:
+                Sign back = new Sign();
+                back.signIn();
+            default:
+                break;
+        }
+    }
+
     public void profile() {
+        System.out.println("\033[1;94m" + "profile menu" + "\033[0m");
         System.out.println("1.show information");
         System.out.println("2.change information");
-        System.out.println("3.Back");
+        System.out.println("3.wallet charging");
+        System.out.println("4.Back");
         Scanner input = new Scanner(System.in);
         int in = input.nextInt();
         if (in == 1) {
@@ -50,6 +95,8 @@ public class User {
             System.out.println(this.email);
             System.out.println("your phonenumber:");
             System.out.println(this.phoneNumber);
+            System.out.println("your wallet amount:");
+            System.out.println(this.wallet);
             System.out.println("\n Enter 1 for back");
             System.out.println(" Enter 2 for exit");
 
@@ -63,16 +110,19 @@ public class User {
         }
 
         if (in == 2) {
-            editProfile();
+            this.editProfile();
         }
         if (in == 3) {
-            Sign usersign = new Sign();
-            usersign.signIn();
+            this.wallet();
+        }
+        if (in == 4) {
+            userMenu(i);
         }
     }
 
     public void editProfile() {
         Scanner input = new Scanner(System.in);
+        System.out.println("\033[1;97m" + "edit profile menu" + "\033[0m");
         System.out.println("1.change username");
         System.out.println("2.change password");
         System.out.println("3.change email");
@@ -119,5 +169,12 @@ public class User {
             default:
                 break;
         }
+    }
+
+    public void wallet() {
+        System.out.println("enter amount of money you want to add:");
+        Scanner input = new Scanner(System.in);
+        this.wallet += input.nextInt();
+        this.profile();
     }
 }

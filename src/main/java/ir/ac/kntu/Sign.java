@@ -13,7 +13,7 @@ public class Sign {
     }
 
     public void sign() {
-        System.out.println("Select Your Role");
+        System.out.println("\u001B[33m" + "Select Your Role" + "\u001B[0m");
         System.out.println("Enter 1 if you are Admin");
         System.out.println("Enter 2 if you are User");
         Scanner input = new Scanner(System.in);
@@ -45,7 +45,7 @@ public class Sign {
     }
 
     public void userStart() {
-        System.out.println("Sign up or Sign in");
+        System.out.println("\033[0;36m" + "Sign up or Sign in" + "\033[0m");
         System.out.println("Enter 1 for sign up");
         System.out.println("Enter 2 for sign in");
         System.out.println("Enter 3 for back");
@@ -63,13 +63,14 @@ public class Sign {
     }
 
     public void signUp() {
+        System.out.println("\033[1;95m" + "sign up menu" + "\u001B[0m");
         Scanner input = new Scanner(System.in);
 
         System.out.println("Enter username:");
         String username = input.nextLine();
         System.out.println("Enter password");
         String password = input.nextLine();
-        if (!password.matches("(?=(.*[a-z]){3,})(?=(.*[A-Z]){2,})(?=(.*[0-9]){2,})(?=(.*)+).{8,}")) {
+        if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
             System.out.println("not correct password!");
             signUp();
         }
@@ -94,7 +95,7 @@ public class Sign {
     }
 
     public void signIn() {
-        System.out.println("\nsign in menu\n");
+        System.out.println("\033[0;31m" + "sign in menu" + "\033[0m");
         Scanner input = new Scanner(System.in);
         System.out.println("Enter username:");
         String username = input.nextLine();
@@ -105,7 +106,8 @@ public class Sign {
             if (usersArr.get(i).getUsername().equals(username)) {
                 if (usersArr.get(i).getPassword().equals(password)) {
                     System.out.println("Your welcome");
-                    userMenu(i);
+                    User usern = new User();
+                    usern.userMenu(i);
                     count++;
                 }
             }
@@ -113,33 +115,6 @@ public class Sign {
         if (count == 0) {
             System.out.println("Invalid Enties");
             signIn();
-        }
-
-    }
-
-    public void userMenu(int i) {
-        System.out.println("User Menu\n");
-        System.out.println("Enter 1 for profile");
-        System.out.println("Enter 2 for library");
-        System.out.println("Enter 3 for store");
-        System.out.println("Enter 4 for friends");
-        Scanner input = new Scanner(System.in);
-        int in = input.nextInt();
-        switch (in) {
-            case 1:
-                usersArr.get(i).profile();
-                break;
-            case 2:
-                usersArr.get(i).profile();
-                break;
-            case 3:
-                usersArr.get(i).profile();
-                break;
-            case 4:
-                usersArr.get(i).profile();
-                break;
-            default:
-                break;
         }
     }
 }
