@@ -40,6 +40,7 @@ public class Sign {
             System.out.println("dkd");
         } else {
             System.out.println("incorrect username or password");
+            sign();
         }
     }
 
@@ -93,6 +94,7 @@ public class Sign {
     }
 
     public void signIn() {
+        System.out.println("\nsign in menu\n");
         Scanner input = new Scanner(System.in);
         System.out.println("Enter username:");
         String username = input.nextLine();
@@ -101,10 +103,10 @@ public class Sign {
         int count = 0;
         for (int i = 0; i < usersArr.size(); i++) {
             if (usersArr.get(i).getUsername().equals(username)) {
-                if (usersArr.get(i).getUsername().equals(password)) {
+                if (usersArr.get(i).getPassword().equals(password)) {
                     System.out.println("Your welcome");
+                    userMenu(i);
                     count++;
-                    break;
                 }
             }
         }
@@ -115,4 +117,29 @@ public class Sign {
 
     }
 
+    public void userMenu(int i) {
+        System.out.println("User Menu\n");
+        System.out.println("Enter 1 for profile");
+        System.out.println("Enter 2 for library");
+        System.out.println("Enter 3 for store");
+        System.out.println("Enter 4 for friends");
+        Scanner input = new Scanner(System.in);
+        int in = input.nextInt();
+        switch (in) {
+            case 1:
+                usersArr.get(i).profile();
+                break;
+            case 2:
+                usersArr.get(i).profile();
+                break;
+            case 3:
+                usersArr.get(i).profile();
+                break;
+            case 4:
+                usersArr.get(i).profile();
+                break;
+            default:
+                break;
+        }
+    }
 }
