@@ -2,8 +2,11 @@ package ir.ac.kntu;
 
 public class User {
     private String username;
+
     private String password;
+
     private String phoneNumber;
+    
     private String email;
 
     public String getUsername() {
