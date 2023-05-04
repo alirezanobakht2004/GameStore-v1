@@ -24,6 +24,7 @@ public class Admin {
                 gameManage();
                 break;
             case 2:
+                userManage();
                 break;
             case 3:
                 s.sign();
@@ -35,9 +36,8 @@ public class Admin {
     public void gameManage() {
         System.out.println("\033[0;91m" + "game manage menu" + "\033[0m");
         System.out.println("1.create games");
-        System.out.println("2.modify games");
-        System.out.println("3.delete games");
-        System.out.println("4.back");
+        System.out.println("2.modify games or delete games");
+        System.out.println("3.back");
         Scanner input = new Scanner(System.in);
         int adminDes = input.nextInt();
         switch (adminDes) {
@@ -48,8 +48,6 @@ public class Admin {
                 searchGame();
                 break;
             case 3:
-
-            case 4:
                 startMenu();
             default:
                 break;
@@ -126,21 +124,21 @@ public class Admin {
         System.out.println("2.create a user");
         System.out.println("3.modify a user information");
         System.out.println("4.delete a user");
-        System.out.println("4.back");
+        System.out.println("5.back");
         Scanner input = new Scanner(System.in);
         int adminDes = input.nextInt();
         switch (adminDes) {
             case 1:
-                
+
                 break;
             case 2:
-                
+                createUser();
                 break;
             case 3:
 
             case 4:
 
-            break;
+                break;
             case 5:
                 startMenu();
             default:
@@ -148,4 +146,90 @@ public class Admin {
         }
     }
 
+    public void createUser() {
+        System.out.println("\033[1;95m" + "create user menu" + "\u001B[0m");
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter username:");
+        String username = input.nextLine();
+        System.out.println("Enter password");
+        String password = input.nextLine();
+        if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
+            System.out.println("not correct password!");
+            createUser();
+        }
+        System.out.println("Enter email:");
+        String email = input.nextLine();
+        System.out.println("Enter phonenumber");
+        String phoneNumber = input.nextLine();
+
+        User user = new User(username, password, phoneNumber, email);
+        int count = 0;
+        for (int i = 0; i < Sign.getUsersArr().size(); i++) {
+            if (Sign.getUsersArr().get(i).getUsername().equals(user.getUsername())) {
+                System.out.println("already taken username!");
+                count++;
+            }
+        }
+        if (count == 0) {
+            Sign.getUsersArr().add(user);
+            System.out.println("\naccount has been succesfully created!\n");
+        }
+        userManage();
+    }
+
+    public void searchUser() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("\033[46m" + "Search user menu" + "\033[0m");
+        System.out.println("how do you want to search user?");
+        System.out.println("1.search by username");
+        System.out.println("2.search by email");
+        System.out.println("3.search by phone number");
+        System.out.println("4.back");
+        int in = input.nextInt();
+        int count = 0;
+        switch (in) {
+            case 1:
+                System.out.println("Enter username:");
+                for (int i = 0; i < Sign.getUsersArr().size(); i++) {
+                    if (Sign.getUsersArr().get(i).getUsername() == input.nextLine()) {
+                        count++;
+                        break;
+                    }
+                }
+                if (count == 0) {
+                    System.out.println("\nThere was no such a username!\n");
+                }
+                break;
+            case 2:
+                System.out.println("Enter email:");
+                for (int i = 0; i < Sign.getUsersArr().size(); i++) {
+                    if (Sign.getUsersArr().get(i).getEmail() == input.nextLine()) {
+                        count++;
+                        break;
+                    }
+                }
+                if (count == 0) {
+                    System.out.println("\nThere was no such a username!\n");
+                }
+                break;
+            case 3:
+                System.out.println("Enter phone number:");
+                for (int i = 0; i < Sign.getUsersArr().size(); i++) {
+                    if (Sign.getUsersArr().get(i).getPhoneNumber() == input.nextLine()) {
+                        count++;
+                        break;
+                    }
+                }
+                if (count == 0) {
+                    System.out.println("\nThere was no such a username!\n");
+                }
+                break;
+            case 4:
+                userManage();
+                break;
+            default:
+                break;
+        }
+    }
 }

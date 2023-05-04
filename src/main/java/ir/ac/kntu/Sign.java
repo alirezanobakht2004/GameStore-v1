@@ -91,7 +91,7 @@ public class Sign {
         }
         if (count == 0) {
             usersArr.add(user);
-            System.out.println("You signed up!\n");
+            System.out.println("\nYou signed up!\n");
         }
         sign();
     }
