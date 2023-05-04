@@ -3,12 +3,19 @@ package ir.ac.kntu;
 import java.util.Scanner;
 
 public class User {
+
     private String username;
+
     private String password;
+
     private String phoneNumber;
+
     private String email;
+
     private int wallet = 0;
+
     private int i;
+    
     public User(String username, String password, String phoneNumber, String email) {
         this.username = username;
         this.password = password;

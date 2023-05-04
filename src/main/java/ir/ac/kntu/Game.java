@@ -3,13 +3,21 @@ package ir.ac.kntu;
 import java.util.Scanner;
 
 public class Game {
+
     private String title;
+
     private String genre;
+
     private String info;
+
     private String price;
+
     private float rating;
+
     private Comments comments;
+
     private User community;
+    
     public Game(String title, String genre, String info, String price) {
         this.title = title;
         this.genre = genre;
