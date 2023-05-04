@@ -26,7 +26,7 @@ public class Admin {
             case 2:
                 break;
             case 3:
-                s.adminStart();
+                s.sign();
             default:
                 break;
         }
@@ -70,6 +70,7 @@ public class Admin {
         String price = input.nextLine();
         Game game = new Game(title, genre, info, price);
         gamesArr.add(game);
+        System.out.println("\nYour game has been succsessfully created!\n");
         gameManage();
     }
 
@@ -106,11 +107,12 @@ public class Admin {
                     game.gameModify(index);
                     break;
                 case 2:
-                    System.out.println("enter the index of the game you want to modify:");
+                    System.out.println("enter the index of the game you want to delete:");
                     int index1 = input.nextInt();
                     gamesArr.remove(index1);
+                    System.out.println("\nYour game has been succsessfully deleted!\n");
                 case 3:
-                    searchGame();
+                    gameManage();
                 default:
                     break;
             }
