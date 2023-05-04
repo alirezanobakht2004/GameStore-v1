@@ -185,9 +185,10 @@ public class Admin {
             case 1:
                 System.out.println("Enter username:");
                 for (int i = 0; i < Sign.getUsersArr().size(); i++) {
-                    if (Sign.getUsersArr().get(i).getUsername() == input.nextLine()) {
+                    Scanner inputOne = new Scanner(System.in);
+                    if (Sign.getUsersArr().get(i).getUsername().equals(inputOne.next())) {
+                        userSetting(i);
                         count++;
-
                         break;
                     }
                 }
@@ -199,7 +200,9 @@ public class Admin {
             case 2:
                 System.out.println("Enter email:");
                 for (int i = 0; i < Sign.getUsersArr().size(); i++) {
-                    if (Sign.getUsersArr().get(i).getEmail() == input.nextLine()) {
+                    String email = input.nextLine();
+                    if (Sign.getUsersArr().get(i).getEmail().equals(email)) {
+                        userSetting(i);
                         count++;
                         break;
                     }
@@ -212,7 +215,9 @@ public class Admin {
             case 3:
                 System.out.println("Enter phone number:");
                 for (int i = 0; i < Sign.getUsersArr().size(); i++) {
-                    if (Sign.getUsersArr().get(i).getPhoneNumber() == input.nextLine()) {
+                    String phone = input.nextLine();
+                    if (Sign.getUsersArr().get(i).getPhoneNumber().equals(phone)) {
+                        userSetting(i);
                         count++;
                         break;
                     }

@@ -16,6 +16,7 @@ public class Sign {
         System.out.println("\u001B[33m" + "Select Your Role" + "\u001B[0m");
         System.out.println("Enter 1 if you are Admin");
         System.out.println("Enter 2 if you are User");
+        System.out.println("Enter 3 for leaving");
         Scanner input = new Scanner(System.in);
         int in = input.nextInt();
         if (in == 1) {
@@ -25,11 +26,13 @@ public class Sign {
         if (in == 2) {
             userStart();
         }
-
+        if (in == 3) {
+            System.exit(0);
+        }
     }
 
     public void adminStart() {
-        System.out.println("\033[1;94m"+"Admin entry menu"+"\033[0m");
+        System.out.println("\033[1;94m" + "Admin entry menu" + "\033[0m");
         String usernamerOfAdmin;
         String passwordOfAdmin;
         System.out.println("Enter your username");
