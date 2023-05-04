@@ -120,26 +120,19 @@ public class Admin {
 
     public void userManage() {
         System.out.println("\033[0;91m" + "user manage menu" + "\033[0m");
-        System.out.println("1.show information of users");
+        System.out.println("1.Users Setting");
         System.out.println("2.create a user");
-        System.out.println("3.modify a user information");
-        System.out.println("4.delete a user");
-        System.out.println("5.back");
+        System.out.println("3.back");
         Scanner input = new Scanner(System.in);
         int adminDes = input.nextInt();
         switch (adminDes) {
             case 1:
-
+                searchUser();
                 break;
             case 2:
                 createUser();
                 break;
             case 3:
-
-            case 4:
-
-                break;
-            case 5:
                 startMenu();
             default:
                 break;
@@ -194,11 +187,13 @@ public class Admin {
                 for (int i = 0; i < Sign.getUsersArr().size(); i++) {
                     if (Sign.getUsersArr().get(i).getUsername() == input.nextLine()) {
                         count++;
+
                         break;
                     }
                 }
                 if (count == 0) {
                     System.out.println("\nThere was no such a username!\n");
+                    searchUser();
                 }
                 break;
             case 2:
@@ -210,7 +205,8 @@ public class Admin {
                     }
                 }
                 if (count == 0) {
-                    System.out.println("\nThere was no such a username!\n");
+                    System.out.println("\nThere was no such a email!\n");
+                    searchUser();
                 }
                 break;
             case 3:
@@ -222,7 +218,8 @@ public class Admin {
                     }
                 }
                 if (count == 0) {
-                    System.out.println("\nThere was no such a username!\n");
+                    System.out.println("\nThere was no such a phone number!\n");
+                    searchUser();
                 }
                 break;
             case 4:
@@ -232,4 +229,43 @@ public class Admin {
                 break;
         }
     }
+
+    public void userSetting(int i) {
+        System.out.println("\033[1;96m" + "User Setting Menu" + "\033[0m");
+
+        System.out.println("\n index of user is: " + "\033[1;93m" + String.valueOf(i) + "\033[0m" + "\n");
+
+        System.out.println("What do you want to do?");
+
+        System.out.println("1.Show information of user");
+        System.out.println("2.modifying user information");
+        System.out.println("3.delete user");
+        System.out.println("4.back");
+        Scanner input = new Scanner(System.in);
+        switch (input.nextInt()) {
+            case 1:
+                System.out.println("username: " + Sign.getUsersArr().get(i).getUsername());
+                System.out.println("password: " + Sign.getUsersArr().get(i).getPassword());
+                System.out.println("email: " + Sign.getUsersArr().get(i).getEmail());
+                System.out.println("phonenumber: " + Sign.getUsersArr().get(i).getPhoneNumber());
+                System.out.println("wallet amount: " + Sign.getUsersArr().get(i).getWallet());
+                userSetting(i);
+                break;
+            case 2:
+                User user = new User();
+                user.AdminmodifyingUser(i);
+                userSetting(i);
+                break;
+            case 3:
+                Sign.getUsersArr().remove(i);
+                System.out.println("user has been successfully deleted!");
+                userSetting(i);
+                break;
+            case 4:
+                userManage();
+            default:
+                break;
+        }
+    }
+
 }

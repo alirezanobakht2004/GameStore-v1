@@ -15,7 +15,7 @@ public class User {
     private int wallet = 0;
 
     private int i;
-    
+
     public User(String username, String password, String phoneNumber, String email) {
         this.username = username;
         this.password = password;
@@ -135,7 +135,7 @@ public class User {
                 System.out.println("Enter new username:");
                 Scanner inputOne = new Scanner(System.in);
                 this.username = inputOne.nextLine();
-                System.out.println("your username changed!");
+                System.out.println("\nyour username changed!\n");
                 this.profile();
                 break;
             case 2:
@@ -144,9 +144,9 @@ public class User {
                 String pass = inputTwo.nextLine();
                 if (pass.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
                     this.password = pass;
-                    System.out.println("your password changed!");
+                    System.out.println("\nyour password changed!\n");
                 } else {
-                    System.out.println("wrong pattern");
+                    System.out.println("\nwrong pattern!\n");
                 }
                 this.profile();
                 break;
@@ -154,14 +154,14 @@ public class User {
                 System.out.println("Enter new email:");
                 Scanner inputThree = new Scanner(System.in);
                 this.email = inputThree.nextLine();
-                System.out.println("your email changed!");
+                System.out.println("\nyour email changed!\n");
                 this.profile();
                 break;
             case 4:
                 System.out.println("Enter new phonenumber:");
                 Scanner inputFour = new Scanner(System.in);
                 this.phoneNumber = inputFour.nextLine();
-                System.out.println("your phonenumber changed!");
+                System.out.println("\nyour phonenumber changed!\n");
                 this.profile();
                 break;
             case 5:
@@ -174,9 +174,61 @@ public class User {
 
     public void wallet() {
         System.out.println("enter amount of money you want to add:");
-        
+
         Scanner input = new Scanner(System.in);
         this.wallet += input.nextInt();
         this.profile();
+    }
+
+    public void AdminmodifyingUser(int i) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("\033[1;97m" + "edit user  menu" + "\033[0m");
+        System.out.println("1.change username");
+        System.out.println("2.change password");
+        System.out.println("3.change email");
+        System.out.println("4.change phonenumber");
+        System.out.println("5.back");
+        int inner = input.nextInt();
+        Admin x = new Admin();
+        switch (inner) {
+            case 1:
+                System.out.println("Enter new username:");
+                Scanner inputOne = new Scanner(System.in);
+                this.username = inputOne.nextLine();
+                System.out.println("\nusername changed!\n");
+                AdminmodifyingUser(i);
+                break;
+            case 2:
+                System.out.println("Enter new password:");
+                Scanner inputTwo = new Scanner(System.in);
+                String pass = inputTwo.nextLine();
+                if (pass.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
+                    this.password = pass;
+                    System.out.println("\npassword changed!\n");
+                } else {
+                    System.out.println("\nwrong pattern!\n");
+                }
+                AdminmodifyingUser(i);
+                break;
+            case 3:
+                System.out.println("Enter new email:");
+                Scanner inputThree = new Scanner(System.in);
+                this.email = inputThree.nextLine();
+                System.out.println("\nemail changed!\n");
+                AdminmodifyingUser(i);
+                break;
+            case 4:
+                System.out.println("Enter new phonenumber:");
+                Scanner inputFour = new Scanner(System.in);
+                this.phoneNumber = inputFour.nextLine();
+                System.out.println("\nphonenumber changed!\n");
+                AdminmodifyingUser(i);
+                break;
+            case 5:
+                x.userSetting(i);
+                break;
+            default:
+                break;
+        }
     }
 }
