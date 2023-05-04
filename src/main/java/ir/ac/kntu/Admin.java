@@ -184,9 +184,10 @@ public class Admin {
         switch (in) {
             case 1:
                 System.out.println("Enter username:");
+                Scanner inputOne = new Scanner(System.in);
+                String user = inputOne.nextLine();
                 for (int i = 0; i < Sign.getUsersArr().size(); i++) {
-                    Scanner inputOne = new Scanner(System.in);
-                    if (Sign.getUsersArr().get(i).getUsername().equals(inputOne.next())) {
+                    if (Sign.getUsersArr().get(i).getUsername().equals(user)) {
                         userSetting(i);
                         count++;
                         break;
@@ -199,8 +200,9 @@ public class Admin {
                 break;
             case 2:
                 System.out.println("Enter email:");
+                Scanner inputTwo = new Scanner(System.in);
+                String email = inputTwo.nextLine();
                 for (int i = 0; i < Sign.getUsersArr().size(); i++) {
-                    String email = input.nextLine();
                     if (Sign.getUsersArr().get(i).getEmail().equals(email)) {
                         userSetting(i);
                         count++;
@@ -214,8 +216,9 @@ public class Admin {
                 break;
             case 3:
                 System.out.println("Enter phone number:");
+                Scanner inputThree = new Scanner(System.in);
+                String phone = inputThree.nextLine();
                 for (int i = 0; i < Sign.getUsersArr().size(); i++) {
-                    String phone = input.nextLine();
                     if (Sign.getUsersArr().get(i).getPhoneNumber().equals(phone)) {
                         userSetting(i);
                         count++;
@@ -263,7 +266,7 @@ public class Admin {
                 break;
             case 3:
                 Sign.getUsersArr().remove(i);
-                System.out.println("user has been successfully deleted!");
+                System.out.println("\033[41m"+"\nuser has been successfully deleted!\n"+"\033[0m");
                 userSetting(i);
                 break;
             case 4:
