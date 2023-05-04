@@ -120,4 +120,32 @@ public class Admin {
         }
     }
 
+    public void userManage() {
+        System.out.println("\033[0;91m" + "user manage menu" + "\033[0m");
+        System.out.println("1.show information of users");
+        System.out.println("2.create a user");
+        System.out.println("3.modify a user information");
+        System.out.println("4.delete a user");
+        System.out.println("4.back");
+        Scanner input = new Scanner(System.in);
+        int adminDes = input.nextInt();
+        switch (adminDes) {
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+
+            case 4:
+
+            break;
+            case 5:
+                startMenu();
+            default:
+                break;
+        }
+    }
+
 }
