@@ -110,6 +110,7 @@ public class Friends {
                                 + indexOfUser + " has requested you!");
                 countRe++;
                 System.out.println("\nrequest sent!\n");
+                break;
             }
         }
         if (countRe == 0) {

@@ -160,7 +160,7 @@ public class Sign {
         for (int i = 0; i < usersArr.size(); i++) {
             if (usersArr.get(i).getUsername().equals(username)) {
                 if (usersArr.get(i).getPassword().equals(password)) {
-                    System.out.println("Your welcome");
+                    System.out.println("Your welcome!");
                     User usern = new User();
                     usern.userMenu(i);
                     count++;
