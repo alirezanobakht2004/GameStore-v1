@@ -18,6 +18,8 @@ public class User {
 
     private String friendsRequest;
 
+    private String friends;
+
     private List<Game> gamesOfUser = new ArrayList<Game>();
 
     public List<Game> getGamesOfUser() {
@@ -72,6 +74,22 @@ public class User {
 
     public int getWallet() {
         return wallet;
+    }
+
+    public String getFriends() {
+        return friends;
+    }
+
+    public String getFriendsRequest() {
+        return friendsRequest;
+    }
+
+    public void setFriendsRequest(String friendsRequest) {
+        this.friendsRequest = friendsRequest;
+    }
+
+    public void setFriends(String friends) {
+        this.friends = friends;
     }
 
     public void userMenu(int i) {
