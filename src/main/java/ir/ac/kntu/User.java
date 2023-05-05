@@ -16,6 +16,8 @@ public class User {
 
     private int wallet = 0;
 
+    private String friendsRequest;
+
     private List<Game> gamesOfUser = new ArrayList<Game>();
 
     public List<Game> getGamesOfUser() {

@@ -1,6 +1,5 @@
 package ir.ac.kntu;
 
-import java.net.Socket;
 import java.util.Scanner;
 
 public class Library {
