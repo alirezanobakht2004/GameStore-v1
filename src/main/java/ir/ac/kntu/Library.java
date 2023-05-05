@@ -57,7 +57,7 @@ public class Library {
                         Float rate = inputTwo.nextFloat();
                         Admin.getGamesArr().get(u).setRating((rate + Admin.getGamesArr().get(u).getRating())
                                 / Admin.getGamesArr().get(u).getRatingNumber());
-                        System.out.println("\nate added successfully!\n");
+                        System.out.println("\nrate added successfully!\n");
                         break;
                     case 4:
                         start(indexOfUser);

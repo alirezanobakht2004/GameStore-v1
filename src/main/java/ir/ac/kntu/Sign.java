@@ -35,13 +35,13 @@ public class Sign {
         String usernamerOfAdmin;
         String passwordOfAdmin;
         System.out.println("\n" + "You can type ### and enter to comeback\n");
-        System.out.println("Enter your username");
+        System.out.println("Enter your username:");
         Scanner input1 = new Scanner(System.in);
         usernamerOfAdmin = input1.nextLine();
         if (usernamerOfAdmin.equals("###")) {
             sign();
         }
-        System.out.println("Enter your password");
+        System.out.println("Enter your password:");
         passwordOfAdmin = input1.nextLine();
         if (passwordOfAdmin.equals("###")) {
             sign();
@@ -80,7 +80,7 @@ public class Sign {
         if (username.equals("###")) {
             sign();
         }
-        System.out.println("Enter password");
+        System.out.println("Enter password:");
         String password = input.nextLine();
         if (password.equals("###")) {
             sign();
@@ -91,7 +91,7 @@ public class Sign {
         if (email.equals("###")) {
             sign();
         }
-        System.out.println("Enter phonenumber");
+        System.out.println("Enter phonenumber:");
         String phoneNumber = input.nextLine();
         if (phoneNumber.equals("###")) {
             sign();

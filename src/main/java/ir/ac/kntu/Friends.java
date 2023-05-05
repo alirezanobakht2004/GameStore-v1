@@ -137,7 +137,7 @@ public class Friends {
                                         + "\n");
                         Sign.getUsersArr().get(j)
                                 .setFriends(Sign.getUsersArr().get(j).getFriends() + "\n" + "Friend: " +
-                                        Sign.getUsersArr().get(indexOfUser).getUsername() + "\n");
+                                        Sign.getUsersArr().get(indexOfUser).getUsername() +" index: "+indexOfUser+ "\n");
                         Sign.getUsersArr().get(indexOfUser).setFriendsRequest(
                                 friendsReq(Sign.getUsersArr().get(indexOfUser).getFriendsRequest(), userAcc));
                         countReq++;
