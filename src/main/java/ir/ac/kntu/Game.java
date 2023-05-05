@@ -14,6 +14,8 @@ public class Game {
 
     private float rating;
 
+    private int ratingNumber = 0;
+
     private String comments;
 
     private String community;
@@ -55,6 +57,26 @@ public class Game {
 
     public String getCommunity() {
         return community;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public int getRatingNumber() {
+        return ratingNumber;
+    }
+
+    public void setRatingNumber(int ratingNumber) {
+        this.ratingNumber = ratingNumber;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 
     public void gameModify(int i) {

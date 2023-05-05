@@ -1,5 +1,6 @@
 package ir.ac.kntu;
 
+import java.net.Socket;
 import java.util.Scanner;
 
 public class Library {
@@ -48,9 +49,9 @@ public class Library {
                     "\n" + "price of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getPrice() + "\033[0m");
             System.out.println(
                     "\n" + "rating of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getRating() + "\033[0m");
-
-            System.out.println("\nEnter 1 to go community of game:");
-            System.out.println("Enter 2 back:\n");
+            System.out.println("\n" + "Comments: " + "\n" + Admin.getGamesArr().get(u).getComments() + "\n");
+            System.out.println("\nEnter 1 to go community of game");
+            System.out.println("Enter 2 back\n");
             int h = input.nextInt();
             if (h == 1) {
                 System.out.println("\033[1;95m" + "Community Menu" + "\033[0m");
@@ -61,16 +62,34 @@ public class Library {
                 int des = input.nextInt();
                 switch (des) {
                     case 1:
+                        System.out.println(Admin.getGamesArr().get(u).getCommunity());
                         break;
                     case 2:
+                        System.out.println("Enter your comment:");
+                        Scanner inputOne = new Scanner(System.in);
+                        String comment = inputOne.nextLine();
+                        String oldCommuent = "\033[1;96m" + Admin.getGamesArr().get(u).getComments() + "\033[0m";
+                        Admin.getGamesArr().get(u).setComments(oldCommuent + "\n" + "Username: "
+                                + Sign.getUsersArr().get(indexOfUser).getUsername() + " commented: " + "\033[1;96m"
+                                + comment + "\033[0m");
+                        System.out.println("\ncomment added successfully!\n");
                         break;
                     case 3:
+                        Admin.getGamesArr().get(u).setRatingNumber(Admin.getGamesArr().get(u).getRatingNumber() + 1);
+                        System.out.println("Enter your rate:");
+                        Scanner inputTwo = new Scanner(System.in);
+                        Float rate = inputTwo.nextFloat();
+                        Admin.getGamesArr().get(u).setRating((rate + Admin.getGamesArr().get(u).getRating())
+                                / Admin.getGamesArr().get(u).getRatingNumber());
+                        System.out.println("\nate added successfully!\n");
                         break;
                     case 4:
+                        start(indexOfUser);
                         break;
                     default:
                         break;
                 }
+                start(indexOfUser);
             }
             if (h == 2) {
                 start(indexOfUser);

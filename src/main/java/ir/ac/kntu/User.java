@@ -198,7 +198,6 @@ public class User {
 
     public void wallet(int i) {
         System.out.println("enter amount of money you want to add:");
-
         Scanner input = new Scanner(System.in);
         this.wallet += input.nextInt();
         System.out.println("\nYou charged your wallet!\n");
