@@ -34,7 +34,6 @@ public class Sign {
         int in = input.nextInt();
         if (in == 1) {
             adminStart();
-
         }
         if (in == 2) {
             userStart();

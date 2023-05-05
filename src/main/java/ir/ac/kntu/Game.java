@@ -16,7 +16,7 @@ public class Game {
 
     private int ratingNumber = 0;
 
-    private String comments;
+    private String comments="Comments:";
 
     private String community;
 

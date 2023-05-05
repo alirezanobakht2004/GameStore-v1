@@ -16,9 +16,9 @@ public class User {
 
     private int wallet = 0;
 
-    private String friendsRequest;
+    private String friendsRequest="Friends request:";
 
-    private String friends;
+    private String friends="Friends:";
 
     private List<Game> gamesOfUser = new ArrayList<Game>();
 

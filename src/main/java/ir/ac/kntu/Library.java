@@ -86,7 +86,7 @@ public class Library {
                 "\n" + "price of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getPrice() + "\033[0m");
         System.out.println(
                 "\n" + "rating of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getRating() + "\033[0m");
-        System.out.println("\n" + "Comments: " + "\n" + Admin.getGamesArr().get(u).getComments() + "\n");
+        System.out.println( "\n" + Admin.getGamesArr().get(u).getComments() + "\n");
         System.out.println("\nEnter 1 to go community of game");
         System.out.println("Enter 2 back\n");
     }
@@ -108,5 +108,16 @@ public class Library {
                 + Sign.getUsersArr().get(indexOfUser).getUsername() + " commented: " + "\033[1;96m"
                 + comment + "\033[0m");
         System.out.println("\ncomment added successfully!\n");
+    }
+
+    public String friendsReq(String freReq, String user) {
+        String[] lines = freReq.split("\n");
+        StringBuilder newString = new StringBuilder();
+        for (String line : lines) {
+            if (!line.contains(user)) {
+                newString.append(line).append("\n");
+            }
+        }
+        return newString.toString();
     }
 }
