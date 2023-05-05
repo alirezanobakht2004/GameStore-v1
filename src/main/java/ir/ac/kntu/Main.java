@@ -6,5 +6,4 @@ public class Main {
         Sign start = new Sign();
         start.sign();
     }
-
 }

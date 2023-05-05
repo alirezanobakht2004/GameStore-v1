@@ -133,11 +133,13 @@ public class Friends {
                 for (int j = 0; j < Sign.getUsersArr().size(); j++) {
                     if (Sign.getUsersArr().get(j).getUsername().equals(userAcc)) {
                         Sign.getUsersArr().get(indexOfUser).setFriends(
-                                Sign.getUsersArr().get(indexOfUser).getFriends() + "\nFriend: " + userAcc
+                                Sign.getUsersArr().get(indexOfUser).getFriends() + "\nFriend: " + userAcc + " index: "
+                                        + j
                                         + "\n");
                         Sign.getUsersArr().get(j)
                                 .setFriends(Sign.getUsersArr().get(j).getFriends() + "\n" + "Friend: " +
-                                        Sign.getUsersArr().get(indexOfUser).getUsername() +" index: "+indexOfUser+ "\n");
+                                        Sign.getUsersArr().get(indexOfUser).getUsername() + " index: " + indexOfUser
+                                        + "\n");
                         Sign.getUsersArr().get(indexOfUser).setFriendsRequest(
                                 friendsReq(Sign.getUsersArr().get(indexOfUser).getFriendsRequest(), userAcc));
                         countReq++;

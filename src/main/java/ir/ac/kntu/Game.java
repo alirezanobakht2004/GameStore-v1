@@ -18,7 +18,7 @@ public class Game {
 
     private String comments="Comments:";
 
-    private String community;
+    private String community="Community of users:";
 
     public Game(String title, String genre, String info, int price) {
         this.title = title;
