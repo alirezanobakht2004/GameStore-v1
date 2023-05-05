@@ -151,7 +151,7 @@ public class Sign {
         if (username.equals("###")) {
             sign();
         }
-        System.out.println("Enter password");
+        System.out.println("Enter password:");
         String password = input.nextLine();
         if (password.equals("###")) {
             sign();

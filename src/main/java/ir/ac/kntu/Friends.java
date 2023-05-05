@@ -143,6 +143,7 @@ public class Friends {
                                 friendsReq(Sign.getUsersArr().get(indexOfUser).getFriendsRequest(), userAcc));
                         countReq++;
                         System.out.println("User accepted!");
+                        break;
                     }
                 }
                 countAlarm(countReq);
@@ -156,6 +157,7 @@ public class Friends {
                     if (Sign.getUsersArr().get(j).getUsername().equals(userRej)) {
                         Sign.getUsersArr().get(indexOfUser).setFriendsRequest(
                                 friendsReq(Sign.getUsersArr().get(indexOfUser).getFriendsRequest(), userRej));
+                                countRej++;
                     }
                 }
                 countAlarm(countRej);
