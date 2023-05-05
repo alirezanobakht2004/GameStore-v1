@@ -3,6 +3,7 @@ package ir.ac.kntu;
 import java.util.Scanner;
 
 public class Store {
+
     int indexOfUser;
 
     public void start(int i) {
@@ -21,6 +22,8 @@ public class Store {
             case 3:
                 User x = new User();
                 x.userMenu(indexOfUser);
+                break;
+            default:
                 break;
         }
     }
@@ -42,27 +45,29 @@ public class Store {
         System.out.println("\n" + "Info of game: " + "\033[1;93m" + Admin.getGamesArr().get(i).getInfo() + "\033[0m");
         System.out.println("\n" + "genre of game: " + "\033[1;93m" + Admin.getGamesArr().get(i).getGenre() + "\033[0m");
         System.out.println("\n" + "price of game: " + "\033[1;93m" + Admin.getGamesArr().get(i).getPrice() + "\033[0m");
-        System.out.println("\n" + "rating of game: " + "\033[1;93m" + Admin.getGamesArr().get(i).getRating() + "\033[0m");
-        
-        if (Sign.getUsersArr().get(indexOfUser).getGamesOfUser().indexOf(Admin.getGamesArr().get(indexOfUser))==-1) {
+        System.out
+                .println("\n" + "rating of game: " + "\033[1;93m" + Admin.getGamesArr().get(i).getRating() + "\033[0m");
+
+        int u = Sign.getUsersArr().get(indexOfUser).getGamesOfUser().indexOf(Admin.getGamesArr().get(i));
+        if (Sign.getUsersArr().get(indexOfUser).getGamesOfUser().indexOf(Admin.getGamesArr().get(i)) == -1) {
             System.out.println("1." + "\033[1;92m" + "Buy the game" + "\033[0m");
             System.out.println("2.Back");
             Scanner input = new Scanner(System.in);
             int in = input.nextInt();
             switch (in) {
                 case 1:
-                    System.out.println("----------" +Sign.getUsersArr().get(indexOfUser).getWallet());
-                    if (Sign.getUsersArr().get(indexOfUser).getWallet() >= Admin.getGamesArr().get(indexOfUser).getPrice()) {
+                    if (Sign.getUsersArr().get(indexOfUser).getWallet() >= Admin.getGamesArr().get(i).getPrice()) {
                         Sign.getUsersArr().get(indexOfUser).getGamesOfUser().add(Admin.getGamesArr().get(i));
                         Sign.getUsersArr().get(indexOfUser).setWallet(
-                                Sign.getUsersArr().get(indexOfUser).getWallet() - Admin.getGamesArr().get(i).getPrice());
+                                Sign.getUsersArr().get(indexOfUser).getWallet()
+                                        - Admin.getGamesArr().get(i).getPrice());
                         System.out.println("\n" + "You bought the game successfully!" + "\n");
                     } else {
                         System.out.println("\033[1;91m" + "Not enough money in wallet" + "\033[0m");
                     }
                     break;
                 case 2:
-                    showGame(i);
+                    showGames();
                     break;
                 default:
                     break;

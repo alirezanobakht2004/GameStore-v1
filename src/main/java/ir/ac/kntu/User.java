@@ -18,7 +18,11 @@ public class User {
 
     private int i;
 
-    private static List<Game> gamesOfUser = new ArrayList<Game>();
+    private List<Game> gamesOfUser = new ArrayList<Game>();
+
+    public List<Game> getGamesOfUser() {
+        return gamesOfUser;
+    }
 
     public User(String username, String password, String phoneNumber, String email) {
         this.username = username;
@@ -28,10 +32,6 @@ public class User {
     }
 
     public User() {
-    }
-
-    public List<Game> getGamesOfUser() {
-        return gamesOfUser;
     }
 
     public void setUsername(String username) {
@@ -86,16 +86,16 @@ public class User {
         int in = input.nextInt();
         switch (in) {
             case 1:
-                Sign.getUsersArr().get(i).profile();
+                Sign.getUsersArr().get(i).profile(i);
                 break;
             case 2:
-                Sign.getUsersArr().get(i).profile();
+                library(i);
                 break;
             case 3:
                 store(i);
                 break;
             case 4:
-                Sign.getUsersArr().get(i).profile();
+                Sign.getUsersArr().get(i).profile(i);
                 break;
             case 5:
                 Sign back = new Sign();
@@ -105,7 +105,7 @@ public class User {
         }
     }
 
-    public void profile() {
+    public void profile(int i) {
         System.out.println("\033[1;94m" + "profile menu" + "\033[0m");
         System.out.println("1.show information");
         System.out.println("2.change information");
@@ -130,7 +130,7 @@ public class User {
 
             int back = input.nextInt();
             if (back == 1) {
-                this.profile();
+                this.profile(i);
             }
             if (back == 2) {
                 System.exit(0);
@@ -141,7 +141,7 @@ public class User {
             this.editProfile();
         }
         if (in == 3) {
-            this.wallet();
+            this.wallet(i);
         }
         if (in == 4) {
             userMenu(i);
@@ -163,7 +163,7 @@ public class User {
                 Scanner inputOne = new Scanner(System.in);
                 this.username = inputOne.nextLine();
                 System.out.println("\nyour username changed!\n");
-                this.profile();
+                this.profile(i);
                 break;
             case 2:
                 System.out.println("Enter new password:");
@@ -175,40 +175,46 @@ public class User {
                 } else {
                     System.out.println("\nwrong pattern!\n");
                 }
-                this.profile();
+                this.profile(i);
                 break;
             case 3:
                 System.out.println("Enter new email:");
                 Scanner inputThree = new Scanner(System.in);
                 this.email = inputThree.nextLine();
                 System.out.println("\nyour email changed!\n");
-                this.profile();
+                this.profile(i);
                 break;
             case 4:
                 System.out.println("Enter new phonenumber:");
                 Scanner inputFour = new Scanner(System.in);
                 this.phoneNumber = inputFour.nextLine();
                 System.out.println("\nyour phonenumber changed!\n");
-                this.profile();
+                this.profile(i);
                 break;
             case 5:
-                this.profile();
+                this.profile(i);
                 break;
             default:
                 break;
         }
     }
 
-    public void wallet() {
+    public void wallet(int i) {
         System.out.println("enter amount of money you want to add:");
 
         Scanner input = new Scanner(System.in);
         this.wallet += input.nextInt();
-        this.profile();
+        this.profile(i);
     }
 
     public void store(int i) {
         Store x = new Store();
         x.start(i);
     }
+
+    public void library(int i) {
+        Library x = new Library();
+        x.start(i);
+    }
+
 }

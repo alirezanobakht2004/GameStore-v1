@@ -50,11 +50,18 @@ public class Sign {
         System.out.println("\033[1;94m" + "Admin entry menu" + "\033[0m");
         String usernamerOfAdmin;
         String passwordOfAdmin;
+        System.out.println("\n" + "You can type ### and enter to comeback\n");
         System.out.println("Enter your username");
         Scanner input1 = new Scanner(System.in);
         usernamerOfAdmin = input1.nextLine();
+        if (usernamerOfAdmin.equals("###")) {
+            sign();
+        }
         System.out.println("Enter your password");
         passwordOfAdmin = input1.nextLine();
+        if (passwordOfAdmin.equals("###")) {
+            sign();
+        }
         if (usernamerOfAdmin.equals("A") && passwordOfAdmin.equals("1")) {
             Admin admin = new Admin();
             admin.startMenu();
@@ -156,4 +163,6 @@ public class Sign {
             signIn();
         }
     }
+
+    
 }
