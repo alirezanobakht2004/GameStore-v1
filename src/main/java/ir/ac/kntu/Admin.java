@@ -57,7 +57,6 @@ public class Admin {
     public void createGame() {
         System.out.println("\033[43m" + "Create game menu" + "\033[0m");
         Scanner input = new Scanner(System.in);
-
         System.out.println("Enter title:");
         String title = input.nextLine();
         System.out.println("Enter genre");
@@ -188,7 +187,6 @@ public class Admin {
                     }
                 }
                 countAlarm(count);
-                searchUser();
                 break;
             case 2:
                 System.out.println("Enter email:");
@@ -201,7 +199,6 @@ public class Admin {
                     }
                 }
                 countAlarm(count);
-                searchUser();
                 break;
             case 3:
                 System.out.println("Enter phone number:");
@@ -214,7 +211,6 @@ public class Admin {
                     }
                 }
                 countAlarm(count);
-                searchUser();
                 break;
             case 4:
                 userManage();
@@ -222,6 +218,7 @@ public class Admin {
             default:
                 break;
         }
+        searchUser();
     }
 
     public void searchUser1() {
@@ -321,7 +318,6 @@ public class Admin {
         System.out.println("5.back");
     }
 
-   
     public void countAlarm(int h) {
         if (h == 0) {
             System.out.println("\nThere was no such this!\n");
