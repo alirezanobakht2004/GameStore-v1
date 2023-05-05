@@ -94,7 +94,7 @@ public class User {
                 store(i);
                 break;
             case 4:
-                Sign.getUsersArr().get(i).profile(i);
+                friends(i);
                 break;
             case 5:
                 Sign back = new Sign();
@@ -216,4 +216,8 @@ public class User {
         x.start(i);
     }
 
+    public void friends(int i) {
+        Friends x = new Friends();
+        x.start(i);
+    }
 }
