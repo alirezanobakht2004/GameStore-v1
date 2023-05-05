@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Admin {
     private static List<Game> gamesArr = new ArrayList<Game>();
 
-    public static List<Game> getUsersArr() {
+    public static List<Game> getGamesArr() {
         return gamesArr;
     }
 
@@ -65,7 +65,7 @@ public class Admin {
         System.out.println("Enter info:");
         String info = input.nextLine();
         System.out.println("Enter price:");
-        String price = input.nextLine();
+        int price = input.nextInt();
         Game game = new Game(title, genre, info, price);
         gamesArr.add(game);
         System.out.println("\nYour game has been succsessfully created!\n");
@@ -240,11 +240,8 @@ public class Admin {
 
     public void userSetting(int i) {
         System.out.println("\033[1;96m" + "User Setting Menu" + "\033[0m");
-
         System.out.println("\n index of user is: " + "\033[1;93m" + String.valueOf(i) + "\033[0m" + "\n");
-
         System.out.println("What do you want to do?");
-
         System.out.println("1.Show information of user");
         System.out.println("2.modifying user information");
         System.out.println("3.delete user");
@@ -260,13 +257,12 @@ public class Admin {
                 userSetting(i);
                 break;
             case 2:
-                User user = new User();
-                user.AdminmodifyingUser(i);
+                AdminmodifyingUser(i);
                 userSetting(i);
                 break;
             case 3:
                 Sign.getUsersArr().remove(i);
-                System.out.println("\033[41m"+"\nuser has been successfully deleted!\n"+"\033[0m");
+                System.out.println("\033[41m" + "\nuser has been successfully deleted!\n" + "\033[0m");
                 userSetting(i);
                 break;
             case 4:
@@ -276,4 +272,62 @@ public class Admin {
         }
     }
 
+    public void AdminmodifyingUser(int i) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("\033[1;97m" + "edit user  menu" + "\033[0m");
+        System.out.println("1.change username");
+        System.out.println("2.change password");
+        System.out.println("3.change email");
+        System.out.println("4.change phonenumber");
+        System.out.println("5.change wallet");
+        System.out.println("6.back");
+        int inner = input.nextInt();
+        switch (inner) {
+            case 1:
+                System.out.println("Enter new username:");
+                Scanner inputOne = new Scanner(System.in);
+                Sign.getUsersArr().get(i).setUsername(inputOne.nextLine());
+                System.out.println("\nusername changed!\n");
+                AdminmodifyingUser(i);
+                break;
+            case 2:
+                System.out.println("Enter new password:");
+                Scanner inputTwo = new Scanner(System.in);
+                String pass = inputTwo.nextLine();
+                if (pass.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
+                    Sign.getUsersArr().get(i).setPassword(pass);
+                    System.out.println("\npassword changed!\n");
+                } else {
+                    System.out.println("\nwrong pattern!\n");
+                }
+                AdminmodifyingUser(i);
+                break;
+            case 3:
+                System.out.println("Enter new email:");
+                Scanner inputThree = new Scanner(System.in);
+                Sign.getUsersArr().get(i).setEmail(inputThree.nextLine());
+                System.out.println("\nemail changed!\n");
+                AdminmodifyingUser(i);
+                break;
+            case 4:
+                System.out.println("Enter new phonenumber:");
+                Scanner inputFour = new Scanner(System.in);
+                Sign.getUsersArr().get(i).setPhoneNumber(inputFour.nextLine());
+                System.out.println("\nphonenumber changed!\n");
+                AdminmodifyingUser(i);
+                break;
+            case 5:
+                System.out.println("Enter new wallet amount:");
+                Scanner inputFive = new Scanner(System.in);
+                Sign.getUsersArr().get(i).setWallet(inputFive.nextInt());
+                System.out.println("\nwallet changed!\n");
+                AdminmodifyingUser(i);
+                break;
+            case 6:
+                userSetting(i);
+                break;
+            default:
+                break;
+        }
+    }
 }

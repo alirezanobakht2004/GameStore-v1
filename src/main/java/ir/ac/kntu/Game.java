@@ -10,7 +10,7 @@ public class Game {
 
     private String info;
 
-    private String price;
+    private int price;
 
     private float rating;
 
@@ -18,7 +18,7 @@ public class Game {
 
     private User community;
 
-    public Game(String title, String genre, String info, String price) {
+    public Game(String title, String genre, String info, int price) {
         this.title = title;
         this.genre = genre;
         this.info = info;
@@ -27,6 +27,14 @@ public class Game {
 
     public Game() {
 
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     public String getTitle() {
@@ -54,28 +62,28 @@ public class Game {
             case 1:
                 System.out.println("Enter new title:");
                 Scanner inputOne = new Scanner(System.in);
-                Admin.getUsersArr().get(i).title = inputOne.nextLine();
+                Admin.getGamesArr().get(i).title = inputOne.nextLine();
                 System.out.println("your game title changed!");
                 gameModify(i);
                 break;
             case 2:
                 System.out.println("Enter new genre:");
                 Scanner inputTwo = new Scanner(System.in);
-                Admin.getUsersArr().get(i).genre = inputTwo.nextLine();
+                Admin.getGamesArr().get(i).genre = inputTwo.nextLine();
                 System.out.println("your game genre changed!");
                 gameModify(i);
                 break;
             case 3:
                 System.out.println("Enter new info:");
                 Scanner inputThree = new Scanner(System.in);
-                Admin.getUsersArr().get(i).info = inputThree.nextLine();
+                Admin.getGamesArr().get(i).info = inputThree.nextLine();
                 System.out.println("your game info changed!");
                 gameModify(i);
                 break;
             case 4:
                 System.out.println("Enter new price:");
                 Scanner inputFour = new Scanner(System.in);
-                Admin.getUsersArr().get(i).price = inputFour.nextLine();
+                Admin.getGamesArr().get(i).price = inputFour.nextInt();
                 System.out.println("your game price changed!");
                 gameModify(i);
                 break;

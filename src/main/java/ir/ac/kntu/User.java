@@ -1,5 +1,7 @@
 package ir.ac.kntu;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class User {
@@ -16,6 +18,8 @@ public class User {
 
     private int i;
 
+    private static List<Game> gamesOfUser = new ArrayList<Game>();
+
     public User(String username, String password, String phoneNumber, String email) {
         this.username = username;
         this.password = password;
@@ -24,7 +28,26 @@ public class User {
     }
 
     public User() {
+    }
 
+    public List<Game> getGamesOfUser() {
+        return gamesOfUser;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {
@@ -33,6 +56,10 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setWallet(int wallet) {
+        this.wallet = wallet;
     }
 
     public String getPhoneNumber() {
@@ -65,14 +92,14 @@ public class User {
                 Sign.getUsersArr().get(i).profile();
                 break;
             case 3:
-                Sign.getUsersArr().get(i).profile();
+                store(i);
                 break;
             case 4:
                 Sign.getUsersArr().get(i).profile();
                 break;
             case 5:
                 Sign back = new Sign();
-                back.signIn();
+                back.sign();
             default:
                 break;
         }
@@ -180,55 +207,8 @@ public class User {
         this.profile();
     }
 
-    public void AdminmodifyingUser(int i) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("\033[1;97m" + "edit user  menu" + "\033[0m");
-        System.out.println("1.change username");
-        System.out.println("2.change password");
-        System.out.println("3.change email");
-        System.out.println("4.change phonenumber");
-        System.out.println("5.back");
-        int inner = input.nextInt();
-        Admin x = new Admin();
-        switch (inner) {
-            case 1:
-                System.out.println("Enter new username:");
-                Scanner inputOne = new Scanner(System.in);
-                this.username = inputOne.nextLine();
-                System.out.println("\nusername changed!\n");
-                AdminmodifyingUser(i);
-                break;
-            case 2:
-                System.out.println("Enter new password:");
-                Scanner inputTwo = new Scanner(System.in);
-                String pass = inputTwo.nextLine();
-                if (pass.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
-                    this.password = pass;
-                    System.out.println("\npassword changed!\n");
-                } else {
-                    System.out.println("\nwrong pattern!\n");
-                }
-                AdminmodifyingUser(i);
-                break;
-            case 3:
-                System.out.println("Enter new email:");
-                Scanner inputThree = new Scanner(System.in);
-                this.email = inputThree.nextLine();
-                System.out.println("\nemail changed!\n");
-                AdminmodifyingUser(i);
-                break;
-            case 4:
-                System.out.println("Enter new phonenumber:");
-                Scanner inputFour = new Scanner(System.in);
-                this.phoneNumber = inputFour.nextLine();
-                System.out.println("\nphonenumber changed!\n");
-                AdminmodifyingUser(i);
-                break;
-            case 5:
-                x.userSetting(i);
-                break;
-            default:
-                break;
-        }
+    public void store(int i) {
+        Store x = new Store();
+        x.start(i);
     }
 }

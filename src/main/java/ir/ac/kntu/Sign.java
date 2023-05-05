@@ -13,6 +13,21 @@ public class Sign {
     }
 
     public void sign() {
+        User user1 = new User("1", "1", "1", "1");
+        User user2 = new User("2", "2", "2", "2");
+        User user3 = new User("3", "3", "3", "3");
+        usersArr.add(user1);
+        usersArr.add(user2);
+        usersArr.add(user3);
+        Game game1 = new Game("1", "1", "1", 1);
+        Game game2 = new Game("2", "2", "2", 2);
+        Game game3 = new Game("3", "3", "3", 3);
+        Admin.getGamesArr().add(game1);
+        Admin.getGamesArr().add(game2);
+        Admin.getGamesArr().add(game3);
+
+
+
         System.out.println("\u001B[33m" + "Select Your Role" + "\u001B[0m");
         System.out.println("Enter 1 if you are Admin");
         System.out.println("Enter 2 if you are User");
@@ -71,19 +86,31 @@ public class Sign {
         System.out.println("\033[1;95m" + "sign up menu" + "\u001B[0m");
         Scanner input = new Scanner(System.in);
 
+        System.out.println("\n" + "You can type ### and enter to comeback\n");
         System.out.println("Enter username:");
         String username = input.nextLine();
+        if (username.equals("###")) {
+            sign();
+        }
         System.out.println("Enter password");
         String password = input.nextLine();
+        if (password.equals("###")) {
+            sign();
+        }
         if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
             System.out.println("not correct password!");
             signUp();
         }
         System.out.println("Enter email:");
         String email = input.nextLine();
+        if (email.equals("###")) {
+            sign();
+        }
         System.out.println("Enter phonenumber");
         String phoneNumber = input.nextLine();
-
+        if (phoneNumber.equals("###")) {
+            sign();
+        }
         User user = new User(username, password, phoneNumber, email);
         int count = 0;
         for (int i = 0; i < usersArr.size(); i++) {
@@ -102,10 +129,17 @@ public class Sign {
     public void signIn() {
         System.out.println("\033[0;31m" + "sign in menu" + "\033[0m");
         Scanner input = new Scanner(System.in);
+        System.out.println("\n" + "You can type ### and enter to comeback\n");
         System.out.println("Enter username:");
         String username = input.nextLine();
+        if (username.equals("###")) {
+            sign();
+        }
         System.out.println("Enter password");
         String password = input.nextLine();
+        if (password.equals("###")) {
+            sign();
+        }
         int count = 0;
         for (int i = 0; i < usersArr.size(); i++) {
             if (usersArr.get(i).getUsername().equals(username)) {
