@@ -14,9 +14,9 @@ public class Game {
 
     private float rating;
 
-    private Comments comments;
+    private String comments;
 
-    private User community;
+    private String community;
 
     public Game(String title, String genre, String info, int price) {
         this.title = title;
@@ -47,6 +47,14 @@ public class Game {
 
     public String getGenre() {
         return genre;
+    }
+
+    public void setCommunity(String community) {
+        this.community = community;
+    }
+
+    public String getCommunity() {
+        return community;
     }
 
     public void gameModify(int i) {

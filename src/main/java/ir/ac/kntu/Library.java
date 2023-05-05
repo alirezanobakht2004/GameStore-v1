@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Library {
     int indexOfUser;
 
-    public void start(int i) {
-        indexOfUser = i;
+    public void start(int t) {
+        indexOfUser = t;
         System.out.println("\033[43m" + "welcome to library" + "\033[0m");
         System.out.println("1.Show your games");
         System.out.println("2.back");
@@ -17,7 +17,7 @@ public class Library {
                 break;
             case 2:
                 User x = new User();
-                x.userMenu(i);
+                x.userMenu(indexOfUser);
                 break;
             default:
                 break;
@@ -25,16 +25,58 @@ public class Library {
     }
 
     public void showGames() {
+        int count = 0;
         for (int i = 0; i < Sign.getUsersArr().get(indexOfUser).getGamesOfUser().size(); i++) {
             System.out.println("Your game title:" + "\033[1;92m"
                     + Sign.getUsersArr().get(indexOfUser).getGamesOfUser().get(i).getTitle() + "\033[0m"
                     + " With index of: " + "\033[1;91m"
                     + Admin.getGamesArr().indexOf(Sign.getUsersArr().get(indexOfUser).getGamesOfUser().get(i))
                     + "\033[0m");
+            count++;
         }
-        System.out.println("Enter index of game:");
-        Scanner input = new Scanner(System.in);
-        
-        start(indexOfUser);
+        if (count != 0) {
+            System.out.println("Enter index of game:");
+            Scanner input = new Scanner(System.in);
+            int u = input.nextInt();
+            System.out.println(
+                    "\n" + "Title of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getTitle() + "\033[0m");
+            System.out
+                    .println("\n" + "Info of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getInfo() + "\033[0m");
+            System.out.println(
+                    "\n" + "genre of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getGenre() + "\033[0m");
+            System.out.println(
+                    "\n" + "price of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getPrice() + "\033[0m");
+            System.out.println(
+                    "\n" + "rating of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getRating() + "\033[0m");
+
+            System.out.println("\nEnter 1 to go community of game:");
+            System.out.println("Enter 2 back:\n");
+            int h = input.nextInt();
+            if (h == 1) {
+                System.out.println("\033[1;95m" + "Community Menu" + "\033[0m");
+                System.out.println("1.see community of users");
+                System.out.println("2.add a comment");
+                System.out.println("3.rate the game");
+                System.out.println("4.back");
+                int des = input.nextInt();
+                switch (des) {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (h == 2) {
+                start(indexOfUser);
+            }
+        } else {
+            start(indexOfUser);
+        }
     }
 }

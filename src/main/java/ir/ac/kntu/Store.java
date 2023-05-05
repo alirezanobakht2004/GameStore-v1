@@ -61,6 +61,9 @@ public class Store {
                 case 1:
                     if (Sign.getUsersArr().get(indexOfUser).getWallet() >= Admin.getGamesArr().get(i).getPrice()) {
                         Sign.getUsersArr().get(indexOfUser).getGamesOfUser().add(Admin.getGamesArr().get(i));
+                        String oldCommunity = "\033[1;96m" + Admin.getGamesArr().get(i).getCommunity() + "\033[0m";
+                        Admin.getGamesArr().get(i).setCommunity(oldCommunity + "\n" + "\033[1;96m"
+                                + Sign.getUsersArr().get(indexOfUser).getUsername() + "\033[0m");
                         Sign.getUsersArr().get(indexOfUser).setWallet(
                                 Sign.getUsersArr().get(indexOfUser).getWallet()
                                         - Admin.getGamesArr().get(i).getPrice());
@@ -137,5 +140,4 @@ public class Store {
         }
     }
 
-    
 }
