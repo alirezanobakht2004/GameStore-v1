@@ -120,9 +120,7 @@ public class Friends {
     public void seeRequest() {
         System.out.println("\033[46m" + "See request menu" + "\033[0m");
         System.out.println(Sign.getUsersArr().get(indexOfUser).getFriendsRequest());
-        System.out.println("Enter 1 to accept a request");
-        System.out.println("Enter 2 to reject a request");
-        System.out.println("Enter 3 to comeback");
+        seeRequestStart();
         Scanner inputFive = new Scanner(System.in);
         int p = inputFive.nextInt();
         switch (p) {
@@ -157,7 +155,7 @@ public class Friends {
                     if (Sign.getUsersArr().get(j).getUsername().equals(userRej)) {
                         Sign.getUsersArr().get(indexOfUser).setFriendsRequest(
                                 friendsReq(Sign.getUsersArr().get(indexOfUser).getFriendsRequest(), userRej));
-                                countRej++;
+                        countRej++;
                     }
                 }
                 countAlarm(countRej);
@@ -168,6 +166,12 @@ public class Friends {
             default:
                 break;
         }
+    }
+
+    public void seeRequestStart() {
+        System.out.println("Enter 1 to accept a request");
+        System.out.println("Enter 2 to reject a request");
+        System.out.println("Enter 3 to comeback");
     }
 
     public void countAlarm(int h) {
