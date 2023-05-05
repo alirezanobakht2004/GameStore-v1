@@ -16,125 +16,16 @@ public class Friends {
         Scanner input = new Scanner(System.in);
         switch (input.nextInt()) {
             case 1:
-                System.out.println("\033[46m" + "Friends list menu" + "\033[0m");
-                System.out.println("\n" + Sign.getUsersArr().get(indexOfUser).getFriends() + "\n");
-                System.out.println("Enter -1 to comeback");
-                System.out.println("Enter index of your friend to see his|her games\n");
-                Scanner inputOne = new Scanner(System.in);
-                int friendUs = inputOne.nextInt();
-                if (friendUs == -1) {
-                    start(indexOfUser);
-                } else {
-                    for (int o = 0; o < Sign.getUsersArr().get(friendUs).getGamesOfUser().size(); o++) {
-                        System.out.println("Title of game: "
-                                + Sign.getUsersArr().get(friendUs).getGamesOfUser().get(o).getTitle());
-                    }
-                }
+                showAllFriends();
                 break;
             case 2:
-                System.out.println("\033[46m" + "Search user menu" + "\033[0m");
-                System.out.println("Enter username:");
-                Scanner inputTwo = new Scanner(System.in);
-                String user = inputTwo.nextLine();
-                int count = 0;
-                for (int i = 0; i < Sign.getUsersArr().size(); i++) {
-                    if (Sign.getUsersArr().get(i).getUsername().startsWith(user)) {
-                        System.out.println(Sign.getUsersArr().get(i).getUsername() + " index: " + i);
-                        count++;
-                    }
-                }
-                if (count == 0) {
-                    System.out.println("\nThere was no such a username!\n");
-                } else {
-                    System.out.println("Enter -1 to comeback");
-                    System.out.println("Enter index of your friend to see his|her games");
-                    Scanner inputThree = new Scanner(System.in);
-                    int friendUs1 = inputThree.nextInt();
-                    if (friendUs1 == -1) {
-                        start(indexOfUser);
-                    } else {
-                        for (int o = 0; o < Sign.getUsersArr().get(friendUs1).getGamesOfUser().size(); o++) {
-                            System.out.println("Title of game: "
-                                    + Sign.getUsersArr().get(friendUs1).getGamesOfUser().get(o).getTitle());
-                        }
-                    }
-                }
+                searchFriends();
                 break;
             case 3:
-                System.out.println("\033[46m" + "Send request menu" + "\033[0m");
-                System.out.println("Enter username:");
-                Scanner inputFour = new Scanner(System.in);
-                String userReq = inputFour.nextLine();
-                int countRe = 0;
-                for (int j = 0; j < Sign.getUsersArr().size(); j++) {
-                    if (Sign.getUsersArr().get(j).getUsername().equals(userReq)) {
-                        Sign.getUsersArr().get(j)
-                                .setFriendsRequest(Sign.getUsersArr().get(j).getFriendsRequest() + "\n" +
-                                        " username: " + Sign.getUsersArr().get(indexOfUser).getUsername()
-                                        + " with index of: "
-                                        + indexOfUser + " has requested you!");
-                        countRe++;
-                        System.out.println("\nrequest sent!\n");
-                    }
-                }
-                if (countRe == 0) {
-                    System.out.println("\nThere was no such a username!\n");
-                }
+                sendRequest();
                 break;
             case 4:
-                System.out.println("\033[46m" + "See request menu" + "\033[0m");
-                System.out.println(Sign.getUsersArr().get(indexOfUser).getFriendsRequest());
-                System.out.println("Enter 1 to accept a request");
-                System.out.println("Enter 2 to reject a request");
-                System.out.println("Enter 3 to comeback");
-                Scanner inputFive = new Scanner(System.in);
-                int p = inputFive.nextInt();
-                switch (p) {
-                    case 1:
-                        System.out.println("Enter username that you accept:");
-                        Scanner inputSix = new Scanner(System.in);
-                        String userAcc = inputSix.nextLine();
-                        int countReq = 0;
-                        for (int j = 0; j < Sign.getUsersArr().size(); j++) {
-                            if (Sign.getUsersArr().get(j).getUsername().equals(userAcc)) {
-                                Sign.getUsersArr().get(indexOfUser).setFriends(
-                                        Sign.getUsersArr().get(indexOfUser).getFriends() + "\nFriend: " + userAcc
-                                                + "\n");
-                                Sign.getUsersArr().get(j)
-                                        .setFriends(Sign.getUsersArr().get(j).getFriends() + "\n" + "Friend: " +
-                                                Sign.getUsersArr().get(indexOfUser).getUsername() + "\n");
-                                Sign.getUsersArr().get(indexOfUser).setFriendsRequest(
-                                        friendsReq(Sign.getUsersArr().get(indexOfUser).getFriendsRequest(), userAcc));
-                                countReq++;
-                                System.out.println("User accepted!");
-                                break;
-                            }
-                        }
-                        if (countReq == 0) {
-                            System.out.println("\nThere was no such a username!\n");
-                        }
-                        break;
-                    case 2:
-                        System.out.println("Enter username that you reject:");
-                        Scanner inputSeven = new Scanner(System.in);
-                        String userRej = inputSeven.nextLine();
-                        int countRej = 0;
-                        for (int j = 0; j < Sign.getUsersArr().size(); j++) {
-                            if (Sign.getUsersArr().get(j).getUsername().equals(userRej)) {
-                                Sign.getUsersArr().get(indexOfUser).setFriendsRequest(
-                                        friendsReq(Sign.getUsersArr().get(indexOfUser).getFriendsRequest(), userRej));
-                            }
-                        }
-                        if (countRej == 0) {
-                            System.out.println("\nThere was no such a username!\n");
-                        }
-                        break;
-                    case 3:
-                        start(indexOfUser);
-                        break;
-                    default:
-                        break;
-                }
+                seeRequest();
                 break;
             case 5:
                 User x = new User();
@@ -146,8 +37,8 @@ public class Friends {
         start(indexOfUser);
     }
 
-    public String friendsReq(String FreReq, String user) {
-        String[] lines = FreReq.split("\n");
+    public String friendsReq(String freReq, String user) {
+        String[] lines = freReq.split("\n");
         StringBuilder newString = new StringBuilder();
         for (String line : lines) {
             if (!line.contains(user)) {
@@ -155,5 +46,131 @@ public class Friends {
             }
         }
         return newString.toString();
+    }
+
+    public void showAllFriends() {
+        System.out.println("\033[46m" + "Friends list menu" + "\033[0m");
+        System.out.println("\n" + Sign.getUsersArr().get(indexOfUser).getFriends() + "\n");
+        System.out.println("Enter -1 to comeback");
+        System.out.println("Enter index of your friend to see his|her games\n");
+        Scanner inputOne = new Scanner(System.in);
+        int friendUs = inputOne.nextInt();
+        if (friendUs == -1) {
+            start(indexOfUser);
+        } else {
+            for (int o = 0; o < Sign.getUsersArr().get(friendUs).getGamesOfUser().size(); o++) {
+                System.out.println("Title of game: "
+                        + Sign.getUsersArr().get(friendUs).getGamesOfUser().get(o).getTitle());
+            }
+        }
+    }
+
+    public void searchFriends() {
+        System.out.println("\033[46m" + "Search user menu" + "\033[0m");
+        System.out.println("Enter username:");
+        Scanner inputTwo = new Scanner(System.in);
+        String user = inputTwo.nextLine();
+        int count = 0;
+        for (int i = 0; i < Sign.getUsersArr().size(); i++) {
+            if (Sign.getUsersArr().get(i).getUsername().startsWith(user)) {
+                System.out.println(Sign.getUsersArr().get(i).getUsername() + " index: " + i);
+                count++;
+            }
+        }
+        if (count == 0) {
+            System.out.println("\nThere was no such a username!\n");
+        } else {
+            System.out.println("Enter -1 to comeback");
+            System.out.println("Enter index of your friend to see his|her games");
+            Scanner inputThree = new Scanner(System.in);
+            int friendUs1 = inputThree.nextInt();
+            if (friendUs1 == -1) {
+                start(indexOfUser);
+            } else {
+                for (int o = 0; o < Sign.getUsersArr().get(friendUs1).getGamesOfUser().size(); o++) {
+                    System.out.println("Title of game: "
+                            + Sign.getUsersArr().get(friendUs1).getGamesOfUser().get(o).getTitle());
+                }
+            }
+        }
+    }
+
+    public void sendRequest() {
+        System.out.println("\033[46m" + "Send request menu" + "\033[0m");
+        System.out.println("Enter username:");
+        Scanner inputFour = new Scanner(System.in);
+        String userReq = inputFour.nextLine();
+        int countRe = 0;
+        for (int j = 0; j < Sign.getUsersArr().size(); j++) {
+            if (Sign.getUsersArr().get(j).getUsername().equals(userReq)) {
+                Sign.getUsersArr().get(j)
+                        .setFriendsRequest(Sign.getUsersArr().get(j).getFriendsRequest() + "\n" +
+                                " username: " + Sign.getUsersArr().get(indexOfUser).getUsername()
+                                + " with index of: "
+                                + indexOfUser + " has requested you!");
+                countRe++;
+                System.out.println("\nrequest sent!\n");
+            }
+        }
+        if (countRe == 0) {
+            System.out.println("\nThere was no such a username!\n");
+        }
+    }
+
+    public void seeRequest() {
+        System.out.println("\033[46m" + "See request menu" + "\033[0m");
+        System.out.println(Sign.getUsersArr().get(indexOfUser).getFriendsRequest());
+        System.out.println("Enter 1 to accept a request");
+        System.out.println("Enter 2 to reject a request");
+        System.out.println("Enter 3 to comeback");
+        Scanner inputFive = new Scanner(System.in);
+        int p = inputFive.nextInt();
+        switch (p) {
+            case 1:
+                System.out.println("Enter username that you accept:");
+                Scanner inputSix = new Scanner(System.in);
+                String userAcc = inputSix.nextLine();
+                int countReq = 0;
+                for (int j = 0; j < Sign.getUsersArr().size(); j++) {
+                    if (Sign.getUsersArr().get(j).getUsername().equals(userAcc)) {
+                        Sign.getUsersArr().get(indexOfUser).setFriends(
+                                Sign.getUsersArr().get(indexOfUser).getFriends() + "\nFriend: " + userAcc
+                                        + "\n");
+                        Sign.getUsersArr().get(j)
+                                .setFriends(Sign.getUsersArr().get(j).getFriends() + "\n" + "Friend: " +
+                                        Sign.getUsersArr().get(indexOfUser).getUsername() + "\n");
+                        Sign.getUsersArr().get(indexOfUser).setFriendsRequest(
+                                friendsReq(Sign.getUsersArr().get(indexOfUser).getFriendsRequest(), userAcc));
+                        countReq++;
+                        System.out.println("User accepted!");
+                    }
+                }
+                countAlarm(countReq);
+                break;
+            case 2:
+                System.out.println("Enter username that you reject:");
+                Scanner inputSeven = new Scanner(System.in);
+                String userRej = inputSeven.nextLine();
+                int countRej = 0;
+                for (int j = 0; j < Sign.getUsersArr().size(); j++) {
+                    if (Sign.getUsersArr().get(j).getUsername().equals(userRej)) {
+                        Sign.getUsersArr().get(indexOfUser).setFriendsRequest(
+                                friendsReq(Sign.getUsersArr().get(indexOfUser).getFriendsRequest(), userRej));
+                    }
+                }
+                countAlarm(countRej);
+                break;
+            case 3:
+                start(indexOfUser);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void countAlarm(int h) {
+        if (h == 0) {
+            System.out.println("\nThere was no such a username!\n");
+        }
     }
 }

@@ -173,12 +173,7 @@ public class Admin {
 
     public void searchUser() {
         Scanner input = new Scanner(System.in);
-        System.out.println("\033[46m" + "Search user menu" + "\033[0m");
-        System.out.println("how do you want to search user?");
-        System.out.println("1.search by username");
-        System.out.println("2.search by email");
-        System.out.println("3.search by phone number");
-        System.out.println("4.back");
+        searchUser1();
         int in = input.nextInt();
         int count = 0;
         switch (in) {
@@ -190,13 +185,10 @@ public class Admin {
                     if (Sign.getUsersArr().get(i).getUsername().equals(user)) {
                         userSetting(i);
                         count++;
-                        break;
                     }
                 }
-                if (count == 0) {
-                    System.out.println("\nThere was no such a username!\n");
-                    searchUser();
-                }
+                countAlarm(count);
+                searchUser();
                 break;
             case 2:
                 System.out.println("Enter email:");
@@ -206,13 +198,10 @@ public class Admin {
                     if (Sign.getUsersArr().get(i).getEmail().equals(email)) {
                         userSetting(i);
                         count++;
-                        break;
                     }
                 }
-                if (count == 0) {
-                    System.out.println("\nThere was no such a email!\n");
-                    searchUser();
-                }
+                countAlarm(count);
+                searchUser();
                 break;
             case 3:
                 System.out.println("Enter phone number:");
@@ -222,13 +211,10 @@ public class Admin {
                     if (Sign.getUsersArr().get(i).getPhoneNumber().equals(phone)) {
                         userSetting(i);
                         count++;
-                        break;
                     }
                 }
-                if (count == 0) {
-                    System.out.println("\nThere was no such a phone number!\n");
-                    searchUser();
-                }
+                countAlarm(count);
+                searchUser();
                 break;
             case 4:
                 userManage();
@@ -236,6 +222,19 @@ public class Admin {
             default:
                 break;
         }
+    }
+
+    public void searchUser1() {
+        System.out.println("\033[46m" + "Search user menu" + "\033[0m");
+        System.out.println("how do you want to search user?");
+        System.out.println("1.search by username");
+        System.out.println("2.search by email");
+        System.out.println("3.search by phone number");
+        System.out.println("4.back");
+    }
+
+    public void searchUser2() {
+
     }
 
     public void userSetting(int i) {
@@ -257,7 +256,7 @@ public class Admin {
                 userSetting(i);
                 break;
             case 2:
-                AdminmodifyingUser(i);
+                adminmodifyingUser(i);
                 userSetting(i);
                 break;
             case 3:
@@ -272,15 +271,9 @@ public class Admin {
         }
     }
 
-    public void AdminmodifyingUser(int i) {
+    public void adminmodifyingUser(int i) {
         Scanner input = new Scanner(System.in);
-        System.out.println("\033[1;97m" + "edit user  menu" + "\033[0m");
-        System.out.println("1.change username");
-        System.out.println("2.change password");
-        System.out.println("3.change email");
-        System.out.println("4.change phonenumber");
-        System.out.println("5.change wallet");
-        System.out.println("6.back");
+        adminmodifyingUser1();
         int inner = input.nextInt();
         switch (inner) {
             case 1:
@@ -288,46 +281,50 @@ public class Admin {
                 Scanner inputOne = new Scanner(System.in);
                 Sign.getUsersArr().get(i).setUsername(inputOne.nextLine());
                 System.out.println("\nusername changed!\n");
-                AdminmodifyingUser(i);
+                adminmodifyingUser(i);
                 break;
             case 2:
-                System.out.println("Enter new password:");
-                Scanner inputTwo = new Scanner(System.in);
-                String pass = inputTwo.nextLine();
-                if (pass.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
-                    Sign.getUsersArr().get(i).setPassword(pass);
-                    System.out.println("\npassword changed!\n");
-                } else {
-                    System.out.println("\nwrong pattern!\n");
-                }
-                AdminmodifyingUser(i);
-                break;
-            case 3:
                 System.out.println("Enter new email:");
                 Scanner inputThree = new Scanner(System.in);
                 Sign.getUsersArr().get(i).setEmail(inputThree.nextLine());
                 System.out.println("\nemail changed!\n");
-                AdminmodifyingUser(i);
+                adminmodifyingUser(i);
                 break;
-            case 4:
+            case 3:
                 System.out.println("Enter new phonenumber:");
                 Scanner inputFour = new Scanner(System.in);
                 Sign.getUsersArr().get(i).setPhoneNumber(inputFour.nextLine());
                 System.out.println("\nphonenumber changed!\n");
-                AdminmodifyingUser(i);
+                adminmodifyingUser(i);
                 break;
-            case 5:
+            case 4:
                 System.out.println("Enter new wallet amount:");
                 Scanner inputFive = new Scanner(System.in);
                 Sign.getUsersArr().get(i).setWallet(inputFive.nextInt());
                 System.out.println("\nwallet changed!\n");
-                AdminmodifyingUser(i);
+                adminmodifyingUser(i);
                 break;
-            case 6:
+            case 5:
                 userSetting(i);
                 break;
             default:
                 break;
+        }
+    }
+
+    public void adminmodifyingUser1() {
+        System.out.println("\033[1;97m" + "edit user  menu" + "\033[0m");
+        System.out.println("1.change username");
+        System.out.println("2.change email");
+        System.out.println("3.change phonenumber");
+        System.out.println("4.change wallet");
+        System.out.println("5.back");
+    }
+
+   
+    public void countAlarm(int h) {
+        if (h == 0) {
+            System.out.println("\nThere was no such this!\n");
         }
     }
 }

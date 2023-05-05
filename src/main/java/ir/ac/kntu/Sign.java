@@ -90,7 +90,6 @@ public class Sign {
     public void signUp() {
         System.out.println("\033[1;95m" + "sign up menu" + "\u001B[0m");
         Scanner input = new Scanner(System.in);
-
         System.out.println("\n" + "You can type ### and enter to comeback\n");
         System.out.println("Enter username:");
         String username = input.nextLine();
@@ -102,10 +101,7 @@ public class Sign {
         if (password.equals("###")) {
             sign();
         }
-        if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
-            System.out.println("not strong password!");
-            signUp();
-        }
+        passwordMatch(password);
         System.out.println("Enter email:");
         String email = input.nextLine();
         if (email.equals("###")) {
@@ -174,4 +170,10 @@ public class Sign {
         }
     }
 
+    public void passwordMatch(String password){
+        if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")) {
+            System.out.println("not strong password!");
+            signUp();
+        }
+    }
 }

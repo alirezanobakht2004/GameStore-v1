@@ -38,40 +38,17 @@ public class Library {
             System.out.println("Enter index of game:");
             Scanner input = new Scanner(System.in);
             int u = input.nextInt();
-            System.out.println(
-                    "\n" + "Title of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getTitle() + "\033[0m");
-            System.out
-                    .println("\n" + "Info of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getInfo() + "\033[0m");
-            System.out.println(
-                    "\n" + "genre of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getGenre() + "\033[0m");
-            System.out.println(
-                    "\n" + "price of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getPrice() + "\033[0m");
-            System.out.println(
-                    "\n" + "rating of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getRating() + "\033[0m");
-            System.out.println("\n" + "Comments: " + "\n" + Admin.getGamesArr().get(u).getComments() + "\n");
-            System.out.println("\nEnter 1 to go community of game");
-            System.out.println("Enter 2 back\n");
+            shGa(u);
             int h = input.nextInt();
             if (h == 1) {
-                System.out.println("\033[1;95m" + "Community Menu" + "\033[0m");
-                System.out.println("1.see community of users");
-                System.out.println("2.add a comment");
-                System.out.println("3.rate the game");
-                System.out.println("4.back");
+                shGa1(u);
                 int des = input.nextInt();
                 switch (des) {
                     case 1:
                         System.out.println(Admin.getGamesArr().get(u).getCommunity());
                         break;
                     case 2:
-                        System.out.println("Enter your comment:");
-                        Scanner inputOne = new Scanner(System.in);
-                        String comment = inputOne.nextLine();
-                        String oldCommuent = "\033[1;96m" + Admin.getGamesArr().get(u).getComments() + "\033[0m";
-                        Admin.getGamesArr().get(u).setComments(oldCommuent + "\n" + "Username: "
-                                + Sign.getUsersArr().get(indexOfUser).getUsername() + " commented: " + "\033[1;96m"
-                                + comment + "\033[0m");
-                        System.out.println("\ncomment added successfully!\n");
+                        shGa2(u);
                         break;
                     case 3:
                         Admin.getGamesArr().get(u).setRatingNumber(Admin.getGamesArr().get(u).getRatingNumber() + 1);
@@ -96,5 +73,40 @@ public class Library {
         } else {
             start(indexOfUser);
         }
+    }
+
+    public void shGa(int u) {
+        System.out.println(
+                "\n" + "Title of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getTitle() + "\033[0m");
+        System.out
+                .println("\n" + "Info of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getInfo() + "\033[0m");
+        System.out.println(
+                "\n" + "genre of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getGenre() + "\033[0m");
+        System.out.println(
+                "\n" + "price of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getPrice() + "\033[0m");
+        System.out.println(
+                "\n" + "rating of game: " + "\033[1;93m" + Admin.getGamesArr().get(u).getRating() + "\033[0m");
+        System.out.println("\n" + "Comments: " + "\n" + Admin.getGamesArr().get(u).getComments() + "\n");
+        System.out.println("\nEnter 1 to go community of game");
+        System.out.println("Enter 2 back\n");
+    }
+
+    public void shGa1(int u) {
+        System.out.println("\033[1;95m" + "Community Menu" + "\033[0m");
+        System.out.println("1.see community of users");
+        System.out.println("2.add a comment");
+        System.out.println("3.rate the game");
+        System.out.println("4.back");
+    }
+
+    public void shGa2(int u) {
+        System.out.println("Enter your comment:");
+        Scanner inputOne = new Scanner(System.in);
+        String comment = inputOne.nextLine();
+        String oldCommuent = "\033[1;96m" + Admin.getGamesArr().get(u).getComments() + "\033[0m";
+        Admin.getGamesArr().get(u).setComments(oldCommuent + "\n" + "Username: "
+                + Sign.getUsersArr().get(indexOfUser).getUsername() + " commented: " + "\033[1;96m"
+                + comment + "\033[0m");
+        System.out.println("\ncomment added successfully!\n");
     }
 }
