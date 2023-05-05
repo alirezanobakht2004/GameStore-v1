@@ -16,8 +16,6 @@ public class User {
 
     private int wallet = 0;
 
-    private int i;
-
     private List<Game> gamesOfUser = new ArrayList<Game>();
 
     public List<Game> getGamesOfUser() {
@@ -75,7 +73,6 @@ public class User {
     }
 
     public void userMenu(int i) {
-        this.i = i;
         System.out.println("\033[1;92m" + "User Menu" + "\033[0m");
         System.out.println("Enter 1 for profile");
         System.out.println("Enter 2 for library");
@@ -138,7 +135,7 @@ public class User {
         }
 
         if (in == 2) {
-            this.editProfile();
+            this.editProfile(i);
         }
         if (in == 3) {
             this.wallet(i);
@@ -148,7 +145,7 @@ public class User {
         }
     }
 
-    public void editProfile() {
+    public void editProfile(int i) {
         Scanner input = new Scanner(System.in);
         System.out.println("\033[1;97m" + "edit profile menu" + "\033[0m");
         System.out.println("1.change username");
@@ -204,6 +201,7 @@ public class User {
 
         Scanner input = new Scanner(System.in);
         this.wallet += input.nextInt();
+        System.out.println("\nYou charged your wallet!\n");
         this.profile(i);
     }
 

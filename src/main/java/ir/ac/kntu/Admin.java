@@ -79,8 +79,8 @@ public class Admin {
         String name = input.nextLine();
         int count = 0;
         for (int i = 0; i < gamesArr.size(); i++) {
-            if (gamesArr.get(i).getTitle().equals(name)) {
-                System.out.println("name of game: " + name +
+            if (gamesArr.get(i).getTitle().startsWith(name)) {
+                System.out.println("name of game: " + gamesArr.get(i).getTitle() +
                         " genre " + gamesArr.get(i).getGenre() +
                         " info: " + gamesArr.get(i).getInfo() + " index of game is: " +
                         "\033[1;93m" + String.valueOf(i) + "\033[0m");

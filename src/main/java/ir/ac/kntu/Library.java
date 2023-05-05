@@ -32,6 +32,9 @@ public class Library {
                     + Admin.getGamesArr().indexOf(Sign.getUsersArr().get(indexOfUser).getGamesOfUser().get(i))
                     + "\033[0m");
         }
+        System.out.println("Enter index of game:");
+        Scanner input = new Scanner(System.in);
+        
         start(indexOfUser);
     }
 }
